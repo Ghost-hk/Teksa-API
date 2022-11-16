@@ -1,21 +1,20 @@
 import mongoose from "mongoose";
-// import Profile from "./profile.model";
+// import User from "./user.model";
 
-const postSchema = mongoose.Schema({
-  // profile: { type: mongoose.Types.ObjectId, ref: "Profile" },
-  name: { type: String, required: true },
-  description: String,
-  size: { type: String, required: true },
-  type: { type: String, required: true },
-  condition: { type: String, required: true },
-  price: { type: Number, required: true },
-  photos: [String],
-  tags: [String],
-  createdAt: {
-    type: Date,
-    default: new Date(),
+const postSchema = mongoose.Schema(
+  {
+    user: { type: mongoose.Types.ObjectId, ref: "User" },
+    name: { type: String, required: [true, "Please enter a name"] },
+    description: String,
+    gender: { type: String, required: [true, "Please select a gender"] },
+    size: { type: String, required: [true, "Please select a size"] },
+    type: { type: String, required: [true, "Please select a type"] },
+    condition: { type: String, required: [true, "Please select a condition"] },
+    price: { type: Number, required: [true, "Please enter a price"] },
+    photos: [String],
   },
-});
+  { timestamps: true }
+);
 
 const Post = mongoose.model("Post", postSchema);
 

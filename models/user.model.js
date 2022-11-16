@@ -1,27 +1,31 @@
 import mongoose from "mongoose";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 
-const userSchema = mongoose.Schema({
-  email: {
-    type: String,
-    required: true,
-    lowercase: true,
-    unique: true,
-    match: [/\S+@\S+\.\S+/, "is invalid"],
+const userSchema = mongoose.Schema(
+  {
+    firstName: {
+      type: String,
+      required: [true, "Please enter your first name"],
+    },
+    lastName: { type: String, required: [true, "Please enter your last name"] },
+    email: {
+      type: String,
+      required: [true, "Please enter a valid email"],
+      lowercase: true,
+      unique: true,
+      match: [/\S+@\S+\.\S+/, "is invalid"],
+    },
+    password: {
+      type: String,
+      required: [true, "Please enter a valid passwor"],
+    },
+    city: { type: String, required: false },
+    phoneNumber: { type: Number, required: false },
+    photo: { type: String, required: false },
   },
-  password: { type: String, required: true, minlength: 8, maxlength: 16 },
-  povider: { type: String, required: true },
-  createdAt: {
-    type: Date,
-    default: new Date(),
-  },
-  // google
-  googleId: {
-    type: String,
-    unique: true,
-    sparse: true,
-  },
-
-});
+  { timestamps: true }
+);
 
 const User = mongoose.model("User", userSchema);
 

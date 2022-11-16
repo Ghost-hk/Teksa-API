@@ -44,7 +44,6 @@ export const updatePost = async (req, res) => {
     condition,
     price,
     photos,
-    tags,
     _id: id,
   };
 
@@ -72,7 +71,6 @@ export const getPostsByFilter = async (req, res) => {
     return res.status(404).json(posts);
   } catch (error) {
     return res.status(404).json(filters);
-    //   .send(`No post with thos filters`);
   }
 };
 

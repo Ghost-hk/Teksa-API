@@ -1,6 +1,8 @@
 import express from "express";
 const router = express.Router();
 
+import { protect } from "../middleware/authMiddleware.js";
+
 import {
   getPosts,
   createPost,
@@ -12,8 +14,8 @@ import {
 router.get("/", getPosts);
 router.get("/filter", getPostsByFilter);
 
-router.post("/", createPost);
-router.patch("/:id", updatePost);
-router.delete("/:id", deletePost);
+router.post("/", protect, createPost);
+router.patch("/:id", protect, updatePost);
+router.delete("/:id", protect, deletePost);
 
 export default router;
