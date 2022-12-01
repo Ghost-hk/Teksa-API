@@ -1,6 +1,4 @@
 import mongoose from "mongoose";
-import jwt from "jsonwebtoken";
-import bcrypt from "bcryptjs";
 
 const userSchema = mongoose.Schema(
   {
@@ -20,11 +18,16 @@ const userSchema = mongoose.Schema(
       type: String,
       required: [true, "Please enter a valid passwor"],
     },
-    city: { type: String, required: false },
-    phoneNumber: { type: Number, required: false },
+    location: { type: String, required: false },
+    phone: { type: Number, required: false },
     photo: { type: String, required: false },
+    socialMedia: {
+      facebook: { type: String, required: false },
+      instagram: { type: String, required: false },
+    },
   },
-  { timestamps: true }
+  { timestamps: true },
+  { minimize: false }
 );
 
 const User = mongoose.model("User", userSchema);

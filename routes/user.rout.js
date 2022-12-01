@@ -6,12 +6,19 @@ import { protect } from "../middleware/authMiddleware.js";
 import {
   registerUser,
   loginUser,
-  getMe,
+  getProfileData,
+  getAllUsers,
+  getUserData,
+  updateUserData,
 } from "../controllers/user.controller.js";
 
 router.post("/register", registerUser);
 router.post("/login", loginUser);
+router.post("/getprofileinfo", getProfileData);
 
-router.get("/getme", protect, getMe);
+router.patch("/updateuserdata/:id", protect, updateUserData);
+router.get("/getuserdata/:id", protect, getUserData);
+
+router.get("/getallusers", getAllUsers);
 
 export default router;

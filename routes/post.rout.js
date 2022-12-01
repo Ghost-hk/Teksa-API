@@ -9,13 +9,16 @@ import {
   updatePost,
   deletePost,
   getPostsByFilter,
+  getPostsByPage,
 } from "../controllers/post.controller.js";
 
 router.get("/", getPosts);
-router.get("/filter", getPostsByFilter);
+router.post("/filter", getPostsByFilter);
+
+router.get("/page", getPostsByPage);
 
 router.post("/", protect, createPost);
-router.patch("/:id", protect, updatePost);
-router.delete("/:id", protect, deletePost);
+router.patch("/edit/:id", protect, updatePost);
+router.delete("/delete/:id", protect, deletePost);
 
 export default router;

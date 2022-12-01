@@ -3,13 +3,18 @@ import mongoose from "mongoose";
 
 const postSchema = mongoose.Schema(
   {
-    user: { type: mongoose.Types.ObjectId, ref: "User" },
-    name: { type: String, required: [true, "Please enter a name"] },
-    description: String,
-    gender: { type: String, required: [true, "Please select a gender"] },
-    size: { type: String, required: [true, "Please select a size"] },
-    type: { type: String, required: [true, "Please select a type"] },
+    user: {
+      type: mongoose.Types.ObjectId,
+      ref: "User",
+      required: [true, "Please enter a userId"],
+    },
+    titel: { type: String, required: [true, "Please enter a name"] },
+    description: { type: String, required: false },
     condition: { type: String, required: [true, "Please select a condition"] },
+    category: { type: String, required: [true, "Please select a category"] },
+    brand: { type: String, required: [true, "Please select a brand"] },
+    size: { type: String, required: [true, "Please select a size"] },
+    gender: { type: String, required: [true, "Please select a gender"] },
     price: { type: Number, required: [true, "Please enter a price"] },
     photos: [String],
   },
