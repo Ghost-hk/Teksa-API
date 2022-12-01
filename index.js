@@ -20,7 +20,7 @@ app.use(bodyParser.json({ limit: "100mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "100mb", extended: true }));
 // app.use(cors());
 
-const PORT = 8080 || process.env.PORT;
+const PORT = process.env.PORT || 8080;
 
 app.use("/api/posts", postRoutes);
 app.use("/api/auth", authRoutes);
