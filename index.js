@@ -11,10 +11,11 @@ dotenv.config();
 const app = express();
 
 app.use(
-  cors({
-    origin:
-      "https://6377ced05ca7a71b224bc266--incandescent-marshmallow-6d3e37.netlify.app/",
-  })
+  // cors({
+  //   origin:
+  //     "https://6377ced05ca7a71b224bc266--incandescent-marshmallow-6d3e37.netlify.app/",
+  // })
+  cors()
 );
 
 app.use(bodyParser.json({ limit: "100mb", extended: true }));
